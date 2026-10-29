@@ -2,5 +2,74 @@
 #:import utils kivy.utils
 
 <SettingsScreen>:
-    Label:
-        text: "Settings Page"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 15
+
+        Label:
+            text: "[b]Settings[/b]"
+            markup: True
+            font_size: '30sp'
+            size_hint: (1, None)
+            height: '50dp'
+
+        Label:
+            text: "Username"
+            font_size: '18sp'
+            size_hint: (1, None)
+            height: '25dp'
+            text_size: self.size
+            halign: 'left'
+
+        TextInput:
+            id: username_input
+            hint_text: "New username"
+            multiline: False
+            font_size: '18sp'
+            size_hint: (1, None)
+            height: '50dp'
+
+        Label:
+            text: "Email"
+            font_size: '18sp'
+            size_hint: (1, None)
+            height: '25dp'
+            text_size: self.size
+            halign: 'left'
+
+        TextInput:
+            id: email_input
+            hint_text: "you@example.com"
+            multiline: False
+            font_size: '18sp'
+            size_hint: (1, None)
+            height: '50dp'
+
+        AppButton:
+            id: save_button
+            text: "Save Changes"
+
+        Widget:
+            # Empty space pushes the wipe section toward the bottom
+
+        Label:
+            text: "Wiping your data deletes your account and every clue you created."
+            font_size: '14sp'
+            text_size: self.width, None
+            halign: 'center'
+            size_hint: (1, None)
+            height: '40dp'
+
+        AppButton:
+            id: wipe_button
+            text: "Wipe My Data"
+            color: utils.get_color_from_hex("#ffffff")
+
+            canvas.before:
+                Color:
+                    rgba: utils.get_color_from_hex("#d64545")
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [15]
